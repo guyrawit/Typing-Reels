@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class='movie-name'>Movie Name</h1>
-    <video src="/static/typingtest/movies/harrypotter1.mp4" controls></video>
+    <h1 class='movie-name'>{{ movie.title}}</h1>
+    <video src="{{ movie.movie_file.url}}" controls></video>
     <!-- Display the conversation scene here -->
     <form method="post" action="{% url 'typingtest:results' %}">
 
