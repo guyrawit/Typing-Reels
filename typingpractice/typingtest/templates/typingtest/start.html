@@ -1,0 +1,26 @@
+{% extends 'typingtest/base.html' %}
+
+{% block title %}Start Typing Practice{% endblock %}
+
+{% block styles %}
+  <style>
+    body {
+      background-color: white;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <h1 class='movie-name'>Movie Name</h1>
+    <video src="/static/typingtest/movies/harrypotter1.mp4" controls></video>
+    <!-- Display the conversation scene here -->
+    <form method="post" action="{% url 'typingtest:results' %}">
+
+        <div class="typing-area">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="submit-btn">Check</button>
+        
+    </form>
+{% endblock %}

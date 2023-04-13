@@ -1,0 +1,27 @@
+{% extends 'typing/base.html' %}
+
+{% block title %}Typing Practice{% endblock %}
+
+{% block content %}
+    <h1>Typing Practice</h1>
+    <!-- Display the conversation scene here -->
+    <form method="POST" action="{% url 'typing:typing' %}">
+        {% csrf_token %}
+        <!-- Display
+            the typing input field here -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    - `results.html`: This is the template for the page where the user will see their typing test results. Here's an example:
+
+    ```html
+{% extends 'typing/base.html' %}
+
+{% block title %}Typing Test Results{% endblock %}
+
+{% block content %}
+    <h1>Typing Test Results</h1>
+    <p>Your typing speed was {{ wpm }} words per minute!</p>
+    <a href="{% url 'typing:start' %}" class="btn btn-primary">Try Again</a>
+{% endblock %}
+    

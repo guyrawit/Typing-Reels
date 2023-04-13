@@ -1,0 +1,13 @@
+{% extends 'typingtest/base.html' %}
+
+{% block content %}
+  <h1>{{ movie.title }}</h1>
+  <p>{{ movie.description }}</p>
+  <p>Current Position: {{ progress.current_position }}</p>
+
+  <form method="POST" action="{% url 'typingpractice:submit' movie.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

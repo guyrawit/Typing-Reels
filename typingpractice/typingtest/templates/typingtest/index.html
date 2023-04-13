@@ -1,0 +1,21 @@
+
+{% extends 'typingtest/base.html' %}
+{% load static %}
+{% block title %}Typing Practice App{% endblock %}
+
+{% block styles %}
+  <style>
+    body {
+        background-image: url('/static/typingtest/images/S__14450713.jpg');
+        background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <div class='container-welcome'>
+        <h1>Welcome to Typing Practice App</h1>
+        <p>This app helps you practice typing by presenting you with movie conversation scenes that you can listen to and type along with. Click the button below to get started!</p>
+        <a href="{% url 'typingtest:start' %}" class="btn btn-primary">Start Typing Practice</a>
+    <div>
+{% endblock %} 
