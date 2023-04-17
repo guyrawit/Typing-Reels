@@ -1,13 +1,18 @@
-body {
+  body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
   }
+
+  .accuracy {
+    font-size: 60px;
+  }
   .container-result{
-    margin-left: 100px;
-    
-}
+    margin-left: auto;
+    margin-right: auto;   
+  }
+  
   .container-result p{
     color: green;
   }
@@ -74,7 +79,6 @@ body {
 
   .movie-name {
     text-align: center;
-    color: black;
     font-family: 'Roboto', sans-serif;
   }
   
@@ -125,8 +129,52 @@ body {
     cursor: pointer;
   }
   
-  .submit-btn:hover {
-    background-color: #386641 ;
+
+  
+  .container-result {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top : 50px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    text-align: center;
   }
   
+  .container-result h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
   
+  .container-result h2 {
+    font-size: 50px;
+    color: #6a994e;
+    margin-bottom: 10px;
+  }
+  
+  .container-result .result {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 50px;
+  }
+  
+  .container-result p {
+    color: black;
+  }
+  
+  .container-result a {
+    margin-top: 50px;
+    padding: 10px 20px;
+    background-color: #6a994e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .container-result a:hover {
+    background-color: #386641 ;
+  }
+
+

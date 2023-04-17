@@ -3,19 +3,34 @@
 {% block title %}Start Typing Practice{% endblock %}
 
 {% block styles %}
-  <style>
-    body {
-      background-color: white;
-    }
-  </style>
+<style>
+  {% if movie.movie_name == "Harry Potter" %}
+  body {
+    background-image: url("/static/typingtest/images/desktop-1920x1080.jpg");
+  }
+
+  .movie-name {
+    color: white;
+  }
+  {% else %}
+  body {
+    background-color: white;
+  }
+  
+  .movie-name {
+    color: black;
+  }
+    {% endif %}
+</style>
 {% endblock %}
 
+
 {% block content %}
-    <h1 class='movie-name'>{{ movie.title}}</h1>
+    <h1 class='movie-name'>{{ movie.movie_name}}</h1>
     <video src="{{ movie.movie_file.url}}" controls></video>
     <!-- Display the conversation scene here -->
     <form method="post" action="{% url 'typingtest:results' %}">
-
+        <input type="hidden" name="movie_id" value="{{ movie.id }}">
         <div class="typing-area">
             {% csrf_token %}
             {{ form.as_p }}

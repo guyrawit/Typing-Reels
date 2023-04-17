@@ -94,9 +94,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "typingreels",
-        "USER": "guyrawit",
+        "USER": "typing-reels-mysql",
         "PASSWORD": "happy123",
-        "HOST": "localhost",
+        "HOST": "35.198.241.56",
         "PORT": 3306
     }
 }

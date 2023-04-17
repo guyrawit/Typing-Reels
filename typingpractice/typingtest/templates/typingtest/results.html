@@ -6,15 +6,25 @@
 
 {% block styles %}
   <style>
-    body {
-      background-color: white;
+    .next-button {
+      margin: auto;
+
     }
   </style>
 {% endblock %}
 
 {% block content %}
     <div class='container-result'>
-        <h1>Your result</h1>
-        <p>Your input : {{ data }}</p>        
+        <h1>YOUR RESULT</h1>
+        <div class="accuracy">
+          <h2>{{ accuracy}}%<h2>
+        </div>
+        <div class="result">
+          <p id="input">Your input : {{ data }}</p>   
+          <p id="transcript">Transcription : {{movie.transcript}}</p>     
+        </div>
+        <a href="{% url 'typingtest:start' %}" class="next-button">Next</a>
     <div>
-{% endblock %} 
+    
+    
+{% endblock %}
