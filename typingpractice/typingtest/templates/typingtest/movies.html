@@ -1,0 +1,34 @@
+{% extends 'typingtest/base.html' %}
+{% load static %}
+{% block title %}List of movies{% endblock %}
+
+{% block styles %}
+<style>
+    .movies-container {
+        margin-top: 100px;
+        max-width: 1500px;
+        padding: 0 20px;
+      }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto py-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for movie in movies %}
+      <div class="col">
+        <div class="card h-100">
+            <a href="{% url 'typingtest:start_movie' movie_id=movie.id %}">
+                <img src="{{ movie.thumbnail.url }}" class="card-img-top" alt="{{ movie.movie_name }}">
+            </a>
+            <div class="card-body text-center">
+            <h5 class="card-title font-weight-bold">{{ movie.movie_name }}</h5>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+{% endblock %} 
+<video src="{{ movie.movie_file.url}}" controls></video>

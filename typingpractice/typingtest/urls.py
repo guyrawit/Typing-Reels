@@ -7,5 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('start/', views.start, name='start'),
     # path('typing/', views.typing, name='typing'),
-    path('results/', views.results, name='results')
-]
+    path('results/', views.results, name='results'),
+    path('movies/', views.movies, name='movies'),
+    path('start/<int:movie_id>/', views.start_movie, name='start_movie'),
+    ]

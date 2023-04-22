@@ -10,7 +10,12 @@ def index(request):
 
 def start(request):
     random_movie = MovieScene.objects.order_by('?').first()
-    print(random_movie.title)
+    form = TypingForm()
+    context = {'form': form, "movie": random_movie}
+    return render(request, 'typingtest/start.html', context)
+
+def start_movie(request, movie_id):
+    random_movie = MovieScene.objects.get(id=movie_id)
     form = TypingForm()
     context = {'form': form, "movie": random_movie}
     return render(request, 'typingtest/start.html', context)
@@ -31,3 +36,8 @@ def results(request):
     accuracy = str(accuracy)[:4]
     context = {'data': data_original, 'movie': movie, 'accuracy':accuracy}
     return render(request, 'typingtest/results.html', context)
+
+def movies(request):
+    objects = MovieScene.objects.order_by('id')[:10]
+    context = {"movies":objects}
+    return render(request, 'typingtest/movies.html', context)
