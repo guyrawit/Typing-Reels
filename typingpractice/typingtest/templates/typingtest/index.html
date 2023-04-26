@@ -6,17 +6,24 @@
 {% block styles %}
   <style>
     body {
-      background-image: url("/static/typingtest/images/indexbackground.jpg");
+      background-image: url('/static/typingtest/images/indexbackground.jpg');
       background-size: cover;
-
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
     }
   </style>
 {% endblock %}
 
 {% block content %}
-    <div class='container-welcome'>
-        <h1>Welcome to Typing Practice App</h1>
-        <p>This app helps you practice typing by presenting you with movie conversation scenes that you can listen to and type along with. Click the button below to get started!</p>
-        <a href="{% url 'typingtest:start' %}" class="btn btn-primary">Start Typing Practice</a>
-    <div>
+
+<div class="container-fluid d-flex align-items-center justify-content-center" style="height: 95vh;">
+  <div class="text-center text-white">
+    <h1 class="display-5 font-weight-bold">Welcome to Typing Practice App</h1>
+    <p class="lead mx-10">This app helps you practice typing by presenting you with movie conversation scenes that you can listen to and type along with. Click the button below to get started!</p>
+    <a href="{% url 'typingtest:start' %}" class="btn btn-primary btn-lg mt-3">Start Typing Practice</a>
+  </div>
+</div>
+  
+
 {% endblock %} 
