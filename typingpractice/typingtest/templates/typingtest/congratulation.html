@@ -1,0 +1,33 @@
+{% extends 'typingtest/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h4 class="mb-0 text-center">Congratulations!</h4>
+        </div>
+        <div class="card-body col-md-12 text-center">
+          <p class="text-center">You have completed all the typing tests.</p>
+          <p class="text-center">Please enter your name to submit your score.</p>
+          <form method="POST" action="{% url 'typingtest:save_score' %}">
+            {% csrf_token %}
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">Name:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" required style="width:90%">
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-success mt-3">Submit</button>
+              <a href="{% url 'typingtest:index' %}" class="btn btn-secondary mt-3">Retake the Task</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
