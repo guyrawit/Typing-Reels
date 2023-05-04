@@ -8,23 +8,42 @@
   <style>
     .next-button {
       margin: auto;
-
     }
+    .green {
+      color: green!important;
+  }
+  
+    .red {
+      color: red!important;
+  }
   </style>
 {% endblock %}
 
 {% block content %}
     <div class='container-result'>
-        <h1>YOUR RESULT</h1>
-        <div class="accuracy">
-          <h2>{{ accuracy}}%<h2>
-        </div>
+      {% if real_accuracy > real_accuracy_ai %}
+          <h1>Congratulations! You beat the AI! 🎉</h1>
+          <div class="accuracy">
+              <h2 class="green">{{ accuracy }} > {{accuracy_ai}}</h2>
+          </div>
+      {% elif real_accuracy == real_accuracy_ai %}
+          <h1>Wow! You have the same level as the AI! 😎</h1>
+          <div class="accuracy">
+              <h2 class="white">{{ accuracy }} = {{accuracy_ai}}</h2>
+          </div>
+      {% else %}
+          <h1>Sorry, you lost to the AI 😔</h1>
+          <div class="accuracy">
+              <h2 class="red">{{ accuracy }} < {{accuracy_ai}}</h2>
+          </div>
+      {% endif %}
+
         <div class="result">
-          <p id="input">Your input : {{ data }}</p>   
-          <p id="transcript">Transcription : {{movie.transcript}}</p>     
+            <p id="input">You : {{ data }}</p>   
+            <p id="transcript">Google AI : {{ movie.transcript_ai }}</p>     
+            <p id="transcript">Transcription: {{ movie.transcript }}</p>     
         </div>
+        
         <a href="{% url 'typingtest:start' %}" class="next-button">Next</a>
-    <div>
-    
-    
+    </div>
 {% endblock %}

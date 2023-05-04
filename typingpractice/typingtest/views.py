@@ -47,23 +47,27 @@ def results(request):
         movie = MovieScene.objects.get(id=movie_id)
         data = re.sub(r'[^\w\s]', '', data_original.lower())
         transcript = re.sub(r'[^\w\s]', '', movie.transcript.lower())
+        transcript_ai = re.sub(r'[^\w\s]', '', movie.transcript_ai.lower())
         vectorizer = TfidfVectorizer()
+        vectorizer2 = TfidfVectorizer()
         tfidf_matrix = vectorizer.fit_transform([data , transcript])
-        accuracy = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])[0][0]*100
-        accuracy = str(accuracy)[:4]
-        context = {'data': data_original, 'movie': movie, 'accuracy':accuracy}
+        tfidf_matrix_ai = vectorizer2.fit_transform([transcript_ai , transcript])
+        real_accuracy = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])[0][0]*100
+        real_accuracy_ai = cosine_similarity(tfidf_matrix_ai[0], tfidf_matrix_ai[1])[0][0]*100
+        accuracy = str(real_accuracy)[:4]
+        accuracy_ai = str(real_accuracy_ai)[:4]
+
         if 'movies' not in request.session:
             request.session['movies'] = {}
         request.session['movies'][movie_id] = float(accuracy)
         
-        context = {'data': data_original, 'movie': movie, 'accuracy': accuracy}
-        
+        context = {'data': data_original, 'movie': movie, 'accuracy':accuracy, 'accuracy_ai':accuracy_ai, 'real_accuracy': real_accuracy, 'real_accuracy_ai':real_accuracy_ai}
+        print(real_accuracy, real_accuracy_ai)
         movie_list = request.session['movie_list']
         if movie.id in movie_list:
             movie_list.remove(movie.id)
             request.session['movie_list'] = movie_list
-        print(request.session['movies'])  
-        print(request.session['movie_list'])
+
         return render(request, 'typingtest/results.html', context)
     else:
         return HttpResponseBadRequest()

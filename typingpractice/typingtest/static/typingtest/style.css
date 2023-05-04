@@ -19,12 +19,8 @@
     font-size: 60px;
   }
   .container-result{
-    margin-left: auto;
-    margin-right: auto;   
-  }
-  
-  .container-result p{
-    color: green;
+    width: auto;
+
   }
 
   .container {
