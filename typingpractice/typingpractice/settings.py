@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ["*"]
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 # Set the bucket name and credentials for your Google Cloud Storage
-GS_BUCKET_NAME = 'guyrawit-movies'
+GS_BUCKET_NAME =  os.environ.get('BUCKET_NAME')
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     os.environ.get('GS_CREDENTIALS_PATH')
@@ -93,10 +93,10 @@ WSGI_APPLICATION = "typingpractice.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "typingreels",
-        "USER": "typing-reels-mysql",
-        "PASSWORD": "happy123",
-        "HOST": "35.198.241.56",
+        "NAME": os.environ.get('DATABASE'),
+        "USER": os.environ.get('USERNAME'),
+        "PASSWORD": os.environ.get('PASSWORD'),
+        "HOST": os.environ.get('HOSTNAME'),
         "PORT": 3306
     }
 }
