@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-o==c&zv)0#ug2q(x()j+&0bu!9ha(0ou(h#4wu)3reca+*y+37"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
@@ -39,7 +39,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'guyrawit-movies'
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    "savvy-pagoda-381904-242561cd0d00.json"
+    os.environ.get('GS_CREDENTIALS_PATH')
 )
 
 
